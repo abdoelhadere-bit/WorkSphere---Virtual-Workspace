@@ -129,15 +129,19 @@ cvForm.addEventListener("submit", (e) => {
     const url = document.querySelector('input[name="url"]').value.trim();
     const email = document.querySelector('input[name="email"]').value.trim();
     const telephone = document.querySelector('input[name="telephone"]').value.trim()
-    
+
     document.querySelectorAll(".experiencedata").forEach((exp) => {
         let poste = exp.querySelector('input[name="poste"]').value.trim().trim();
         let entreprise = exp.querySelector('input[name="entreprise"]').value.trim().trim();
         let debut = exp.querySelector('input[name="debut"]').value.trim();
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
+
         if (poste || entreprise) {
             experience.push({ poste, entreprise, debut, fin, description });
         }
     })
+
+    const employee = document.createElement("div");
+    createEmployee(employee)
 })
