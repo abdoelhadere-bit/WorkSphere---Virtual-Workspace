@@ -58,5 +58,20 @@ addExperience();
 // Event on addExpBtn to keep adding experiences when it needed
 addExperienceBtn.addEventListener("click", () => addExperience())
 
-
+// Create and employee div whith tailwind style  
+function createEmployee(element) {
+    element.className = "employe flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all cursor-pointer";
+    element.dataset.id = employe.id;
+    element.innerHTML = `
+        <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+            <img class="w-full h-full object-cover" src="${employe.url}" alt="${employe.nom}">
+        </div>
+        <div class="flex-1 min-w-0">
+            <h5 class="text-sm font-semibold text-gray-900 truncate">${employe.nom}</h5>
+            <p class="text-xs text-gray-500 truncate">${employe.role}</p>
+            <p class="text-xs text-gray-500 truncate">${employe.localisation}</p>
+        </div>
+    `;
+    return element;
+}
 
