@@ -212,10 +212,22 @@
                 <h2 class="text-lg font-semibold text-gray-900">Profil de l'employé</h2>
                 <button class="closeDetails text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
             </div>
+            <!-- Container for emplyee details -->
             <div id="detailsEmployee" class="p-6"></div>
-
         </div>
     </section>
-    
+
+    <!-- Modal Choose Employees -->
+    <section id="employesChoose" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
+                <h2 class="text-lg font-semibold text-gray-900">Sélectionner un employé</h2>
+                <button class="closeChoose text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+            </div>
+
+            <!-- Container for choosing employee to add to zones -->
+            <div id="chooseEmployee" class="p-4 space-y-2"></div>
+        </div>
+    </section>
 </body>
 </html>
