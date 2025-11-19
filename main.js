@@ -4,6 +4,8 @@ const detailsModal = document.querySelector("#details");
 const employesChooseModal = document.querySelector("#employesChoose");
 const photoUrlInput = document.getElementById('photoUrl');
 const imagePreview = document.getElementById('imagePreview');
+const experienceTemplate = document.querySelector("#experienceTemplate");
+
 
 // Event on the ajout btn to display the form container
 ajoutBtn.addEventListener("click", () => {
@@ -31,7 +33,7 @@ document.addEventListener("click", (e) => {
     }
 })
 
-// Event input to display the image when it provided
+// Event input url to display the image when it provided
 photoUrlInput.addEventListener('input', function() {
     const url = this.value.trim();
     if (url) {
@@ -40,3 +42,13 @@ photoUrlInput.addEventListener('input', function() {
         imagePreview.innerHTML = '<span class="text-gray-400 text-xs">Aperçu</span>';
     }
 })
+
+// function to clone template experience and adding click event to remove this experiene
+function addExperience() {
+    let clone = experienceTemplate.content.cloneNode(true);
+    let container = clone.querySelector("div");
+    container.querySelector(".removeExpBtn").addEventListener("click", () => {
+        container.remove();
+    });
+    experiencesList.append(container);
+}
