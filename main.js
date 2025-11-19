@@ -5,6 +5,7 @@ const employesChooseModal = document.querySelector("#employesChoose");
 const photoUrlInput = document.getElementById('photoUrl');
 const imagePreview = document.getElementById('imagePreview');
 const experienceTemplate = document.querySelector("#experienceTemplate");
+const addExperienceBtn = document.querySelector("#addExperienceBtn");
 
 
 // Event on the ajout btn to display the form container
@@ -52,3 +53,10 @@ function addExperience() {
     });
     experiencesList.append(container);
 }
+// executing the function when the page is loaded 
+addExperience();
+// Event on addExpBtn to keep adding experiences when it needed
+addExperienceBtn.addEventListener("click", () => addExperience())
+
+
+
