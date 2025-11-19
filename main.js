@@ -75,3 +75,42 @@ function createEmployee(element) {
     return element;
 }
 
+// Create a details modal 
+// loop on the exepriences and add it to details modal
+function employeeDetails(experience) {
+    detailsEmployee.innerHTML = `
+        <div class="flex flex-col items-center text-center pb-6 border-b border-gray-200">
+            <div class="w-26 h-26 rounded-full overflow-hidden bg-gray-100 border-2 border-blue-500 mb-4">
+                <img src="${employe.url}" alt="${employe.nom}" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">${employe.nom}</h3>
+            <p class="text-sm text-gray-500 mb-4">${employe.role}</p>
+            <div class="space-y-1 text-sm text-gray-600">
+                <p><span class="font-medium">Email:</span> ${employe.email}</p>
+                <p><span class="font-medium">Tél:</span> ${employe.telephone}</p>
+                <p><span class="font-medium">Localisation:</span> ${employe.localisation}</p>
+            </div>
+        </div>
+        
+        ${experience.length > 0 ? `
+        <div class="mt-6">
+            <h4 class="text-base font-semibold text-gray-900 mb-4">Expériences professionnelles</h4>
+            <div class="space-y-3" id="experienceList"></div>
+        </div>
+        ` : ''}
+    `
+    if (experience.length > 0) {
+        const expList = detailsEmployee.querySelector("#experienceList");
+        experience.forEach((exp) => {
+            const divExp = document.createElement("div");
+            divExp.className = "p-4 bg-gray-50 rounded-lg border border-gray-200 text-center w-full";
+            divExp.innerHTML = `
+                <p class="font-semibold text-gray-900 text-sm">${exp.poste}</p>
+                <p class="text-gray-600 text-sm mt-1">${exp.entreprise}</p>
+                <p class="text-gray-500 text-xs mt-2">${exp.debut} - ${exp.fin}</p>
+                <p class="text-gray-600 text-sm mt-2">${exp.description}</p>
+            `;
+            expList.appendChild(divExp);
+        });
+    }
+}
