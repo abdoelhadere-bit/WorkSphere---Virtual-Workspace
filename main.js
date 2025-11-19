@@ -7,6 +7,8 @@ const imagePreview = document.getElementById('imagePreview');
 const experienceTemplate = document.querySelector("#experienceTemplate");
 const addExperienceBtn = document.querySelector("#addExperienceBtn");
 
+let employes = [];
+let employe
 
 // Event on the ajout btn to display the form container
 ajoutBtn.addEventListener("click", () => {
@@ -114,3 +116,17 @@ function employeeDetails(experience) {
         });
     }
 }
+
+
+cvForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    employe = { id: Date.now(), nom, role, url, telephone, localisation: 'Unsigned',experience }
+    let experience = []
+
+    const nom = document.querySelector('input[name="nom"]').value.trim();
+    const role = document.querySelector("select[name='role']").value.trim();
+    const url = document.querySelector('input[name="url"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const telephone = document.querySelector('input[name="telephone"]').value.trim()
+})
