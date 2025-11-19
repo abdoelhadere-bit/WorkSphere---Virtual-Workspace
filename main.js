@@ -2,7 +2,8 @@ const ajoutBtn = document.querySelector(".ajoutBtn");
 const annulBtnForm = document.querySelector("#annulBtnForm");
 const detailsModal = document.querySelector("#details");
 const employesChooseModal = document.querySelector("#employesChoose");
-
+const photoUrlInput = document.getElementById('photoUrl');
+const imagePreview = document.getElementById('imagePreview');
 
 // Event on the ajout btn to display the form container
 ajoutBtn.addEventListener("click", () => {
@@ -27,5 +28,15 @@ document.addEventListener("click", (e) => {
     if (e.target.classList.contains("closeChoose")) {
         employesChooseModal.classList.add("hidden");
         employesChooseModal.classList.remove("flex");
+    }
+})
+
+// Event input to display the image when it provided
+photoUrlInput.addEventListener('input', function() {
+    const url = this.value.trim();
+    if (url) {
+        imagePreview.innerHTML = `<img src="${url}" class="w-full h-full object-cover">`;
+    } else {
+        imagePreview.innerHTML = '<span class="text-gray-400 text-xs">Aperçu</span>';
     }
 })
