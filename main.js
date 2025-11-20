@@ -151,6 +151,8 @@ cvForm.addEventListener("submit", (e) => {
     employes.push(employe);
     employesContainer.appendChild(employee);
 
+    showToast("L'Employé à été enregistrer avec succées")
+
     // Reset Form
     cvForm.reset();
     // reset the image container
@@ -160,6 +162,12 @@ cvForm.addEventListener("submit", (e) => {
     formContainerAjout.classList.add("hidden");
     formContainerAjout.classList.remove("flex");
 })
+
+function filterByRole(employees, role){
+    return employees.filter(emp => emp.role === role)
+}
+
+
 
 
 function showToast(message, type = "info") {
