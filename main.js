@@ -303,6 +303,13 @@ function addEmployeeToBox(emp, divEmp, index) {
 // Controlling the logic of our worksphere
 btns_ajout.forEach(btn => {
     btn.addEventListener('click', () => {
+
+        // check if there is no employees at all
+        if(employesContainer.children.length === 0){
+            showToast('Non Employée existe', 'warning')
+            return
+        }
+
         // filter the employes the not already in a box
         let availableEmployees = employes.filter(emp => {
         const boxes = document.querySelectorAll('.box1, .box2, .box3, .box4, .box5, .box6')
