@@ -190,7 +190,8 @@ function chooseList(employees, loc='', index, role){
     // check if there is no employe, then show a toast 
     if (employees.length === 0) {
         showToast('Aucun employé n’a accès à cette zone', 'warning')
-    } else {
+    } 
+    else {
         // looping on the employees and creat and html element for every emploe
         employees.forEach((emp) => {
             emp.localisation == 'Unsigned'
@@ -212,7 +213,7 @@ function chooseList(employees, loc='', index, role){
                 emp.localisation = loc
                 // function to add employe to box
                 addEmployeeToBox(emp, divEmp, index);
-                
+
               // check if there is no employe in list we remove the list
                 if(chooseEmployee.children.length === 0){
                     setTimeout(() => {
@@ -225,9 +226,44 @@ function chooseList(employees, loc='', index, role){
             chooseEmployee.appendChild(divEmp);
         })
     }
-}
-            
+} 
 
+// Add employee to box 
+function addEmployeeToBox(emp, divEmp, index) {
+    let empLocal = document.createElement("div");
+    let box = document.querySelector(`.box${index}`);
+
+    // check the box children length
+    if(box.children.length === 6){
+        showToast('Limite atteinte : maximum 5 employés.', 'error')
+        employesChooseModal.classList.add('hidden')
+        employesChooseModal.classList.add('flex')
+        return
+    }
+
+    // create a html element 
+    empLocal.className = "relative flex flex-col items-center w-8 h-8 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
+    empLocal.dataset.id = emp.id
+    const frameColor = ['border-green-600', 'border-yellow-500', 'border-pink-500'][Math.floor(Math.random() * 3)]
+    empLocal.innerHTML = `
+        <div class="employe relative w-full h-full rounded-full p-1 overflow-hidden bg-gray-100 border-3 ${frameColor} aspect-[1/1]">
+            <img class="w-full h-full object-cover rounded-full" src="${emp.url}" alt="${emp.nom}">
+        </div
+        <div class="hidden md:flex absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 items-center gap-1.5 p-1.5 px-3 rounded-full bg-white ${frameColor} border-2 shadow-md">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span
+            <div class="flex flex-col">
+                <h5 class="text-xs font-bold text-gray-900 truncate max-w-[80px]">${emp.nom}</h5>
+                <p class="text-xs text-gray-900 truncate max-w-[80px]">${emp.role} </p>
+            </div>
+            <button class="exit absolute top-4 right-1 text-red-500 hover:text-red-700  hover-scale(105 text-lg font-bold w-2 h-2 flex items-center justify-center rounded-full bg-white/70 hover:bg-red-50 z-10 p-0 leading-none">&times;</button
+        </div>
+    `;
+
+ 
+
+   
+
+}
 
 
 function showToast(message, type = "info") {
