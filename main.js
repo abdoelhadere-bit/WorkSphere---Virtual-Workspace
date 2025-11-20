@@ -150,4 +150,10 @@ cvForm.addEventListener("submit", (e) => {
     // push the employe object to employes array
     employes.push(employe);
     employesContainer.appendChild(employee);
+
+    // Reset Form
+    cvForm.reset();
+    // reset the image container
+    document.getElementById('imagePreview').innerHTML = '<span class="text-gray-400 text-xs">Aperçu</span>';
+
 })
