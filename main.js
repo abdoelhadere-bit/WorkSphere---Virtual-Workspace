@@ -6,6 +6,7 @@ const photoUrlInput = document.getElementById('photoUrl');
 const imagePreview = document.getElementById('imagePreview');
 const experienceTemplate = document.querySelector("#experienceTemplate");
 const addExperienceBtn = document.querySelector("#addExperienceBtn");
+const btns_ajout = document.querySelectorAll('.ajout')
 
 let employes = [];
 let employe
@@ -299,7 +300,24 @@ function addEmployeeToBox(emp, divEmp, index) {
 
 }
 
-
+// Controlling the logic of our worksphere
+btns_ajout.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // filter the employes the not already in a box
+        let availableEmployees = employes.filter(emp => {
+        const boxes = document.querySelectorAll('.box1, .box2, .box3, .box4, .box5, .box6')
+        let check = false
+        
+        // check if an employe inside boxes
+        boxes.forEach(box => {
+            if(box.querySelector(`[data-id = "${emp.id}"]`))
+            check = true
+                
+        })
+        return !check
+    })
+    })
+})
 function showToast(message, type = "info") {
     const container = document.getElementById("toast-container")
 
