@@ -156,4 +156,7 @@ cvForm.addEventListener("submit", (e) => {
     // reset the image container
     document.getElementById('imagePreview').innerHTML = '<span class="text-gray-400 text-xs">Aperçu</span>';
 
+    // hide the form container after submiting
+    formContainerAjout.classList.add("hidden");
+    formContainerAjout.classList.remove("flex");
 })
