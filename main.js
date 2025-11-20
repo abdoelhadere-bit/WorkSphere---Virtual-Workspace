@@ -272,7 +272,23 @@ function addEmployeeToBox(emp, divEmp, index) {
     box.classList.remove('bg-red-600/30'); 
     divEmp.remove(); 
     
- 
+    // add a click event to remove employe from box
+    empLocal.querySelector('.exit').addEventListener('click', (e) => {
+        // e.stopPropagation();
+        if(e.target.classList.contains('exit')){
+            empLocal.remove();
+            const employee = document.createElement("div")
+            createEmployeeForSidebar(employee, emp) 
+            employesContainer.appendChild(employee)
+            if(box.children.length === 1){
+                // check if the box has personnelAjout, so it don't remove red bg
+                if(!classes.classList.contains('personnelAjout')){
+                    console.log(box.children.classList)
+                    box.classList.add('bg-red-600/30')
+                }
+            }
+        }
+    })
 
     // remove employe from employe container when it added to some box
     employesContainer.querySelectorAll('.employe').forEach(empl => {
