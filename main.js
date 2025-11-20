@@ -160,3 +160,26 @@ cvForm.addEventListener("submit", (e) => {
     formContainerAjout.classList.add("hidden");
     formContainerAjout.classList.remove("flex");
 })
+
+
+function showToast(message, type = "info") {
+    const container = document.getElementById("toast-container")
+
+    const colors = {
+        info: "bg-indigo-600",
+        success: "bg-emerald-600",
+        warning: "bg-amber-600",
+        error: "bg-red-600"
+    };
+
+    const toast = document.createElement("div")
+    toast.className = `toast text-white px-4 py-3 rounded-lg shadow-2xl ${colors[type]} border border-white/20`
+    toast.textContent = message
+
+    container.appendChild(toast)
+
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+    
