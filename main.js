@@ -187,7 +187,10 @@ function chooseList(employees, loc='', index, role){
         employees = filterByRole(employees, 'Manager')
     }
 
-    
+    // check if there is no employe, then show a toast 
+    if (employees.length === 0) {
+        showToast('Aucun employé n’a accès à cette zone', 'warning')
+    } 
 }
 
 
