@@ -322,9 +322,27 @@ btns_ajout.forEach(btn => {
                 
         })
         return !check
+        })
+
+        if(btn.classList.contains('personnelAjout')){
+            if(btn.classList.contains('conferance')) chooseList(availableEmployees, 'salle de conferance', 1)   
+            if(btn.classList.contains('personnel')) chooseList(availableEmployees, 'salee du personnel', 5)   
+        }
+        if(btn.classList.contains('serverAjout')){
+            chooseList(availableEmployees, 'salle du server', 2, 'Techniciens IT')   
+        }
+        if(btn.classList.contains('securiteAjout')){
+            chooseList(availableEmployees, 'salle de sécurite', 3, 'Agents de sécurité')   
+        }
+        if(btn.classList.contains('recepcionistAjout')){
+            chooseList(availableEmployees, 'salle de reception', 4, 'Réceptionnistes')   
+        }
+        if(btn.classList.contains('archiveAjout')){
+            chooseList(availableEmployees, "salle d'archive", 6, 'Manager')   
+        }
     })
     })
-})
+
 function showToast(message, type = "info") {
     const container = document.getElementById("toast-container")
 
