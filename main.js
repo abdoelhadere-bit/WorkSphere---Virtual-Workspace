@@ -261,7 +261,12 @@ function addEmployeeToBox(emp, divEmp, index) {
 
  
 
-   
+    // remove employe from employe container when it added to some box
+    employesContainer.querySelectorAll('.employe').forEach(empl => {
+        if (empl.dataset.id === emp.id.toString()) {
+            empl.remove();
+        }
+    });
 
 }
 
