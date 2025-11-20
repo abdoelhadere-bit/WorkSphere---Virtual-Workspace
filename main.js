@@ -163,10 +163,27 @@ cvForm.addEventListener("submit", (e) => {
     formContainerAjout.classList.remove("flex");
 })
 
+// Filtring employees by their role
 function filterByRole(employees, role){
     return employees.filter(emp => emp.role === role)
 }
 
+// Controling the employees who should acces to some room
+function chooseList(employees, loc='', index, role){
+    chooseEmployee.innerHTML = ''
+
+    // Check the role of employees & filter the employes based on this role and add the managers the cleners
+    if(role === 'Techniciens IT' || role === 'Agents de sécurité' || role === 'Réceptionnistes'){
+        let managers = filterByRole(employees, 'Manager')
+        let cleaners = filterByRole(employees, 'Nettoyage')
+        employees = filterByRole(employees, role)
+        employees.push(...managers)
+        employees.push(...cleaners)
+        
+    }
+
+ 
+}
 
 
 
