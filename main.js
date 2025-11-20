@@ -267,7 +267,12 @@ function addEmployeeToBox(emp, divEmp, index) {
             detailsModal.classList.add("flex");
         }
     });
-
+    // append tox, remove red backgroud, remove employe from choose list when it added to box
+    box.appendChild(empLocal);
+    box.classList.remove('bg-red-600/30'); 
+    divEmp.remove(); 
+    
+ 
 
     // remove employe from employe container when it added to some box
     employesContainer.querySelectorAll('.employe').forEach(empl => {
