@@ -121,27 +121,33 @@ function employeeDetails(experience) {
 cvForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    employe = { id: Date.now(), nom, role, url, telephone, localisation: 'Unsigned',experience }
     let experience = []
-
+    
     const nom = document.querySelector('input[name="nom"]').value.trim();
     const role = document.querySelector("select[name='role']").value.trim();
     const url = document.querySelector('input[name="url"]').value.trim();
     const email = document.querySelector('input[name="email"]').value.trim();
     const telephone = document.querySelector('input[name="telephone"]').value.trim()
-
+    
     document.querySelectorAll(".experiencedata").forEach((exp) => {
         let poste = exp.querySelector('input[name="poste"]').value.trim().trim();
         let entreprise = exp.querySelector('input[name="entreprise"]').value.trim().trim();
         let debut = exp.querySelector('input[name="debut"]').value.trim();
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
-
+        
         if (poste || entreprise) {
             experience.push({ poste, entreprise, debut, fin, description });
         }
     })
+    
+    // Put the input values into employe object
+    employe = { id: Date.now(), nom, role, url, telephone, localisation: 'Unsigned',experience }
 
     const employee = document.createElement("div");
     createEmployee(employee)
+
+    // push the employe object to employes array
+    employes.push(employe);
+    employesContainer.appendChild(employee);
 })
