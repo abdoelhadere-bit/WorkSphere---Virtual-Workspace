@@ -182,7 +182,12 @@ function chooseList(employees, loc='', index, role){
         
     }
 
- 
+    // Check if role of employees is manager & filter the employes based manager role
+    if(role === 'Manager'){
+        employees = filterByRole(employees, 'Manager')
+    }
+
+    
 }
 
 
