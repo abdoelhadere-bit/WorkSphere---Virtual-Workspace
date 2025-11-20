@@ -190,9 +190,29 @@ function chooseList(employees, loc='', index, role){
     // check if there is no employe, then show a toast 
     if (employees.length === 0) {
         showToast('Aucun employé n’a accès à cette zone', 'warning')
-    } 
+    } else {
+        // looping on the employees and creat and html element for every emploe
+        employees.forEach((emp) => {
+                if(emp.localisation == 'Unsigned'){
+                    let divEmp = document.createElement("div");
+                    divEmp.className = "flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-200 hover:bg-blue-50 hover:border-blue-300 transition-all cursor-pointer";
+                    divEmp.dataset.id = emp.id;
+                    divEmp.innerHTML = `
+                    <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                        <img class="w-full h-full object-cover" src="${emp.url}" alt="${emp.nom}">
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-semibold text-gray-900">${emp.nom}</h5>
+                            <p class="text-xs text-gray-500">${emp.role}</p>
+                            </div>
+                            `;
+                            
+                    
+                    chooseEmployee.appendChild(divEmp);
+                }
+            });
 }
-
+}
 
 
 function showToast(message, type = "info") {
