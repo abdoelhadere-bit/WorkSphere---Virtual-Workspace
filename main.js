@@ -207,11 +207,20 @@ function chooseList(employees, loc='', index, role){
                             </div>
                             `;
                             
+                            divEmp.addEventListener("click", () => {
+                                // Change the location when it added to a zone
+                                emp.localisation = loc
+                                // function to add employe to box
+                                addEmployeeToBox(emp, divEmp, index);
+
+                               
+    }
+                    });
                     
                     chooseEmployee.appendChild(divEmp);
                 }
             });
-}
+    }
 }
 
 
