@@ -259,7 +259,15 @@ function addEmployeeToBox(emp, divEmp, index) {
         </div>
     `;
 
- 
+    // add click event to show informations details
+    empLocal.addEventListener("click", (e) => {
+        if(!e.target.classList.contains('exit')){
+            employeeDetails(emp.experience)
+            detailsModal.classList.remove("hidden");
+            detailsModal.classList.add("flex");
+        }
+    });
+
 
     // remove employe from employe container when it added to some box
     employesContainer.querySelectorAll('.employe').forEach(empl => {
