@@ -264,16 +264,16 @@ function addEmployeeToBox(emp, divEmp, index) {
     }
 
     // create a html element 
-    empLocal.className = "relative flex flex-col items-center w-8 h-8 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
+    empLocal.className = "relative flex flex-col items-center w-10 h-10 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
     empLocal.dataset.id = emp.id;
     const frameColor = ['border-green-600', 'border-yellow-500', 'border-pink-500'][Math.floor(Math.random() * 3)];
     empLocal.innerHTML = `
         <div class="employe relative w-full h-full rounded-full p-1 overflow-hidden bg-gray-100 border-3 ${frameColor}">
             <img class="w-full h-full object-cover rounded-full" src="${emp.url}" alt="${emp.nom}">
         </div>
-        <div class="hidden md:flex absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 items-center gap-1.5 p-1.5 px-3 rounded-full bg-white ${frameColor} border-2 shadow-md whitespace-nowrap">
+        <div class="hidden lg:block absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 items-center gap-1.5 p-1.5 px-3 rounded-full bg-white ${frameColor} border-2 shadow-md whitespace-nowrap">
             <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-            <div class="flex flex-col">
+            <div class="flex-col  ">
                 <h5 class="text-xs font-bold text-gray-900 truncate max-w-[80px]">${emp.nom}</h5>
                 <p class="text-[10px] text-gray-600 truncate max-w-[80px]">${emp.role}</p>
             </div>
