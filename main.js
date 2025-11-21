@@ -14,7 +14,7 @@ const detailsEmployee = document.querySelector("#detailsEmployee");
 const employesChooseModal = document.querySelector("#employesChoose");
 const chooseEmployee = document.querySelector("#chooseEmployee");
 const searchForm = document.getElementById('#searchForm')
-
+const submitBtn = document.querySelector('button[type="submit"]')
 
 let employes = [];
 let employe
@@ -126,9 +126,30 @@ function employeeDetails(experience) {
     }
 }
 
+const parsleyCheck = $(cvForm).parsley()
+// Verify the form inputs
+cvForm.addEventListener('input', () => {
+    if(parsleyCheck.isValid()){
+        submitBtn.disabled = false
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed')
+    }else{
+        submitBtn.disabled = true
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed')
+    }
+})
+
+
 
 cvForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const regexCheck = $(cvForm).parsley();
+    if(!regexCheck.isValid()){
+        showToast('Veuillez corriger les erreurs dans le formulaire', 'error')
+        formContainerAjout.classList.add("hidden");
+        formContainerAjout.classList.remove("flex");
+        return
+    }
 
     let experience = []
     
