@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-gray-50 ">
-    <div id="toast-container" class="fixed top-4 right-4 z-50 "></div>
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 "></div>
 
     <!-- Modal Details -->
     <section id="details" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
@@ -37,12 +37,12 @@
         </div>
     </section>
 
-    <main class="flex gap-3">
+    <main class="flex gap-3 max-h-screen overflow-hidden">
         
         
         <!-- Main Content -->
         <section class="right-container lg:p-4 p-0"> 
-            <div class="header p-1 my-2 text-center shadow-2xl rounded  ">
+            <div class="header p-1 my-2 text-center shadow-2xl rounded-lg  ">
                 <h1 class="text-gray-700 font-bold text-2xl md:text-4xl">WorkSphere - Virtual Workspace</h1>
             </div>
             <div class="imgContainer rounded-lg shadow-lg relative flex items-center justify-center">
@@ -72,7 +72,7 @@
                         </button>
                     </div>
 
-                    <div class="box5 py-3 px-4 flex flex-wrap gap-[2px] md:gap-5">
+                    <div class="box5 py-3 px-4 flex flex-wrap gap-[2px] md:gap-3">
                         <button class="ajout personnelAjout personnel flex justify-center text-[10px] md:text-xl h-5 w-5 md:h-9 md:w-9 rounded-full text-white font-bold border-2 border-white cursor-pointer transition-colors shadow-sm bg-blue-600 hover:bg-blue-700 hover:scale-103" data-role = "conferance">
                             +
                         </button>
@@ -88,7 +88,7 @@
         </section>
 
         <!-- Sidebar -->
-        <aside class="w-80 my-2 bg-white border-r border-gray-200 flex flex-col">
+        <aside class="w-80 my-4 rounded-lg bg-white border-r border-gray-200 flex flex-col max-h-screen overflow-hidden shadow-xl">
             <div class="lg:px-6 lg:py-4 md:p-0 border-b border-gray-200">
                 <button class="ajoutBtn w-full text-[10px] md:text-[16px] bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors">
                     + Ajouter un employé
@@ -106,7 +106,7 @@
                 </div>
             </form> -->
             
-            <div class="employesContainer flex flex-col px-4 py-2 overflow-y-scroll space-y-2"></div>
+            <div class="employesContainer flex flex-col flex-1 px-4 py-2 overflow-y-auto overflow-x-hidden space-y-2"  style="scrollbar-width: none;"></div>
         </aside>
     </main>
     

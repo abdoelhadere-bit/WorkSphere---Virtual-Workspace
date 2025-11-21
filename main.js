@@ -138,21 +138,25 @@ cvForm.addEventListener("submit", (e) => {
     const email = document.querySelector('input[name="email"]').value.trim();
     const telephone = document.querySelector('input[name="telephone"]').value.trim()
     
-    document.querySelectorAll(".experiencedata").forEach((exp) => {
+    const experienceElements = document.querySelectorAll(".experiencedata")
+        for(const exp of experienceElements) {
         let poste = exp.querySelector('input[name="poste"]').value.trim().trim();
         let entreprise = exp.querySelector('input[name="entreprise"]').value.trim().trim();
         let debut = exp.querySelector('input[name="debut"]').value.trim();
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
         if(new Date(debut) > new Date(fin)){
-            showToast('hghuggu', 'warning')
+            showToast('La date de début doit être avant la date de fin', 'warning')
+            // hide the form container after submiting
+            formContainerAjout.classList.add("hidden");
+            formContainerAjout.classList.remove("flex");
             return
         }else{
             if(poste || entreprise) {
                 experience.push({ poste, entreprise, debut, fin, description });
             }
         }
-    })
+    }
     
     // Put the input values into employe object
     employe = { id: Date.now(), nom, role, url, telephone, localisation: 'Unsigned',experience }
