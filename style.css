@@ -97,18 +97,27 @@
     background: #808080;
 }
 
-/* @media (orientation: portrait) and (max-width: 1279px) {
-    body {
-        flex-direction: column-reverse;
-        justify-content: center;
-        .imgContainer {
-            width: 100%;
-            height: 50vh;
-            padding: 0;
-        }
-    }
-} */
 @media(orientation: landscape) and (max-width: 1279px){
+    aside {
+        width: 20vw !important;
+        overflow: hidden;
+    }
+    .employesContainer .employe {
+        padding: 0.5rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .employesContainer .employe img {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+    .employesContainer .employe h5 {
+        font-size: 0.65rem !important;
+    }
+
+    .employesContainer .employe p {
+        font-size: 0.6rem !important;
+    }
     main{
         height: 100vh;
         width: 100%;
