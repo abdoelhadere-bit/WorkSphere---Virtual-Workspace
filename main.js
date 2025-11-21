@@ -264,7 +264,7 @@ function addEmployeeToBox(emp, divEmp, index) {
     }
 
     // create a html element 
-    empLocal.className = "relative flex flex-col items-center w-10 h-10 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
+    empLocal.className = "relative flex flex-col items-center w-8 h-8 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
     empLocal.dataset.id = emp.id;
     const frameColor = ['border-green-600', 'border-yellow-500', 'border-pink-500'][Math.floor(Math.random() * 3)];
     empLocal.innerHTML = `
