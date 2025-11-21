@@ -300,6 +300,33 @@ function addEmployeeToBox(emp, divEmp, index) {
 
 }
 
+// Re-add the employe to the sidebar
+function createEmployeeForSidebar(element, emp) {
+            emp.localisation = 'Unsigned'
+            element.className = "employe flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all cursor-pointer";
+            element.dataset.id = emp.id;
+            element.innerHTML = `
+                <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                    <img class="w-full h-full object-cover" src="${emp.url}" alt="${emp.nom}">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h5 class="text-sm font-semibold text-gray-900 truncate">${emp.nom}</h5>
+                    <p class="text-xs text-gray-500 truncate">${emp.role}</p>
+                    <p class="text-xs text-gray-500">${emp.localisation}</p>
+
+                </div>
+            `;
+            
+            element.addEventListener("click", () => {
+                employeeDetails(emp.experience);
+                employe = emp; 
+                detailsModal.classList.remove("hidden");
+                detailsModal.classList.add("flex");
+            });
+            
+            return element;
+        }
+
 // Controlling the logic of our worksphere
 btns_ajout.forEach(btn => {
     btn.addEventListener('click', () => {
