@@ -1,12 +1,20 @@
 const ajoutBtn = document.querySelector(".ajoutBtn");
 const annulBtnForm = document.querySelector("#annulBtnForm");
-const detailsModal = document.querySelector("#details");
-const employesChooseModal = document.querySelector("#employesChoose");
 const photoUrlInput = document.getElementById('photoUrl');
 const imagePreview = document.getElementById('imagePreview');
 const experienceTemplate = document.querySelector("#experienceTemplate");
 const addExperienceBtn = document.querySelector("#addExperienceBtn");
 const btns_ajout = document.querySelectorAll('.ajout')
+const employesContainer = document.querySelector(".employesContainer");
+const formContainerAjout = document.querySelector("#formContainerAjout");
+let experiencesList = document.querySelector("#experiencesList");
+const cvForm = document.querySelector('#cvForm');
+const detailsModal = document.querySelector("#details");
+const detailsEmployee = document.querySelector("#detailsEmployee");
+const employesChooseModal = document.querySelector("#employesChoose");
+const chooseEmployee = document.querySelector("#chooseEmployee");
+const searchForm = document.getElementById('#searchForm')
+
 
 let employes = [];
 let employe
@@ -136,9 +144,13 @@ cvForm.addEventListener("submit", (e) => {
         let debut = exp.querySelector('input[name="debut"]').value.trim();
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
-        
-        if (poste || entreprise) {
-            experience.push({ poste, entreprise, debut, fin, description });
+        if(new Date(debut) > new Date(fin)){
+            showToast('hghuggu', 'warning')
+            return
+        }else{
+            if(poste || entreprise) {
+                experience.push({ poste, entreprise, debut, fin, description });
+            }
         }
     })
     
@@ -147,6 +159,13 @@ cvForm.addEventListener("submit", (e) => {
 
     const employee = document.createElement("div");
     createEmployee(employee)
+
+    // Add click event to display the informatios
+    employee.addEventListener("click", () => {
+        employeeDetails(experience);
+        detailsModal.classList.remove("hidden");
+        detailsModal.classList.add("flex");
+    })
 
     // push the employe object to employes array
     employes.push(employe);
@@ -226,6 +245,8 @@ function chooseList(employees, loc='', index, role){
                     
             chooseEmployee.appendChild(divEmp);
         })
+        employesChooseModal.classList.remove("hidden");
+        employesChooseModal.classList.add("flex");
     }
 } 
 
@@ -244,22 +265,21 @@ function addEmployeeToBox(emp, divEmp, index) {
 
     // create a html element 
     empLocal.className = "relative flex flex-col items-center w-8 h-8 md:w-15 md:h-15 rounded-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:scale-[1.02]";
-    empLocal.dataset.id = emp.id
-    const frameColor = ['border-green-600', 'border-yellow-500', 'border-pink-500'][Math.floor(Math.random() * 3)]
+    empLocal.dataset.id = emp.id;
+    const frameColor = ['border-green-600', 'border-yellow-500', 'border-pink-500'][Math.floor(Math.random() * 3)];
     empLocal.innerHTML = `
-        <div class="employe relative w-full h-full rounded-full p-1 overflow-hidden bg-gray-100 border-3 ${frameColor} aspect-[1/1]">
+        <div class="employe relative w-full h-full rounded-full p-1 overflow-hidden bg-gray-100 border-3 ${frameColor}">
             <img class="w-full h-full object-cover rounded-full" src="${emp.url}" alt="${emp.nom}">
-        </div
-        <div class="hidden md:flex absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 items-center gap-1.5 p-1.5 px-3 rounded-full bg-white ${frameColor} border-2 shadow-md">
-            <span class="w-2 h-2 bg-green-500 rounded-full"></span
+        </div>
+        <div class="hidden md:flex absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 items-center gap-1.5 p-1.5 px-3 rounded-full bg-white ${frameColor} border-2 shadow-md whitespace-nowrap">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
             <div class="flex flex-col">
                 <h5 class="text-xs font-bold text-gray-900 truncate max-w-[80px]">${emp.nom}</h5>
-                <p class="text-xs text-gray-900 truncate max-w-[80px]">${emp.role} </p>
+                <p class="text-[10px] text-gray-600 truncate max-w-[80px]">${emp.role}</p>
             </div>
-            <button class="exit absolute top-4 right-1 text-red-500 hover:text-red-700  hover-scale(105 text-lg font-bold w-2 h-2 flex items-center justify-center rounded-full bg-white/70 hover:bg-red-50 z-10 p-0 leading-none">&times;</button
         </div>
+        <button class="exit absolute top-[-4px] right-[-4px] md:top-0 md:right-0 text-red-500 hover:text-red-700 text-lg font-bold w-3 md:w-6 h-3 md:h-6 flex items-center justify-center rounded-full bg-white hover:bg-red-50 shadow-md z-10 transition-all hover:scale-110">&times;</button>
     `;
-
     // add click event to show informations details
     empLocal.addEventListener("click", (e) => {
         if(!e.target.classList.contains('exit')){
@@ -281,9 +301,9 @@ function addEmployeeToBox(emp, divEmp, index) {
             const employee = document.createElement("div")
             createEmployeeForSidebar(employee, emp) 
             employesContainer.appendChild(employee)
-            if(box.children.length === 1){
+            if(box.children.length <= 1){
                 // check if the box has personnelAjout, so it don't remove red bg
-                if(!classes.classList.contains('personnelAjout')){
+                if(!box.classList.contains('box1') && !box.classList.contains('box5')){
                     console.log(box.children.classList)
                     box.classList.add('bg-red-600/30')
                 }
