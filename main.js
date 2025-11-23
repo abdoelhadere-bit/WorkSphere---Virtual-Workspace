@@ -36,6 +36,7 @@ annulBtnForm.addEventListener("click", () => {
 document.addEventListener("click", (e) => {
     // console.log(e.target)
     if (e.target.classList.contains("closeDetails")) {
+        cvForm.reset()
         detailsModal.classList.add("hidden");
         detailsModal.classList.remove("flex");
     }
@@ -146,12 +147,11 @@ cvForm.addEventListener("submit", (e) => {
     const regexCheck = $(cvForm).parsley();
     if(!regexCheck.isValid()){
         showToast('Veuillez corriger les erreurs dans le formulaire', 'error')
-        formContainerAjout.classList.add("hidden");
-        formContainerAjout.classList.remove("flex");
         return
     }
 
     let experience = []
+    let dateCheck = false
     
     const nom = document.querySelector('input[name="nom"]').value.trim();
     const role = document.querySelector("select[name='role']").value.trim();
@@ -166,7 +166,8 @@ cvForm.addEventListener("submit", (e) => {
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
         if(new Date(debut) > new Date(fin)){
-            showToast('hghuggu', 'warning')
+            showToast("La date de début doit être antérieure à la date de fin", 'warning')
+            dateCheck = true
             return
         }else{
             if(poste || entreprise) {
@@ -174,6 +175,10 @@ cvForm.addEventListener("submit", (e) => {
             }
         }
     })
+
+    if(dateCheck){
+        return
+    }
     
     // Put the input values into employe object
     employe = { id: Date.now(), nom, role, url, telephone, localisation: 'Unsigned',experience }
@@ -192,7 +197,7 @@ cvForm.addEventListener("submit", (e) => {
     employes.push(employe);
     employesContainer.appendChild(employee);
 
-    showToast("L'Employé à été enregistrer avec succées")
+    showToast("L'Employé à été enregistrer avec succées", "success")
 
     // Reset Form
     cvForm.reset();
