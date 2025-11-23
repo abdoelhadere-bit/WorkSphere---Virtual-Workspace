@@ -81,24 +81,6 @@ html, body{
     }
 }
 
-/* Scrollbar styling */
-/* .employesContainer::-webkit-scrollbar {
-    width: 6px;
-}
-
-.employesContainer::-webkit-scrollbar-track {
-    background: #E5E5E5;
-    border-radius: 3px;
-}
-
-.employesContainer::-webkit-scrollbar-thumb {
-    background: #A0A0A0;
-    border-radius: 3px;
-}
-
-.employesContainer::-webkit-scrollbar-thumb:hover {
-    background: #808080;
-} */
 
 @media(orientation: landscape) and (max-width: 1279px){
     aside {
@@ -121,10 +103,7 @@ html, body{
     .employesContainer .employe p {
         font-size: 0.6rem !important;
     }
-    /* #toast-container{
-        top: auto !important;
-        bottom: 1rem !important;
-    } */
+
     main{
         height: 100vh;
         width: 100%;

@@ -166,7 +166,14 @@ cvForm.addEventListener("submit", (e) => {
         let fin = exp.querySelector('input[name="fin"]').value.trim();
         let description = exp.querySelector("textarea").value.trim()
         if(new Date(debut) > new Date(fin)){
-            showToast("La date de début doit être antérieure à la date de fin", 'warning')
+            // showToast("La date de début doit être antérieure à la date de fin", 'warning')
+            const finDate = document.getElementById('finDate')
+            const msg = document.createElement('p')
+            msg.className = 'text-red-600'
+            msg.innerHTML = 'La date de début doit être antérieure à la date de fin'
+            finDate.append(msg)
+
+
             dateCheck = true
             return
         }else{
@@ -277,7 +284,7 @@ function chooseList(employees, loc='', index, role){
 } 
 
 // Add employee to box 
-function addEmployeeToBox(emp, divEmp, index) {
+function addEmployeeToBox(emp, divEmp, index) { 
     let empLocal = document.createElement("div");
     let box = document.querySelector(`.box${index}`);
 
